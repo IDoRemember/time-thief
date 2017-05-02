@@ -1,0 +1,7 @@
+<view class="container edit-container">
+	<view  class="edit-image" catchtap="chooseImg">+ 添加封面</view>
+	<input type="text" placeholder="标题" class="edit-title"/>
+	<textarea placeholder="正文" class="edit-textarea" auto-focus />
+	<image src="/images/icon/strategy.png" class="edit-strategy"/>
+	<button from-type="submit" size="default">提交</button>
+</view>

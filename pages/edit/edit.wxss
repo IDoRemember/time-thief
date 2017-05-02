@@ -1,0 +1,27 @@
+.edit-container{
+	background: #fff;
+}
+.edit-image{
+	margin-top: 30rpx;
+	width: 90%;
+	height:300rpx;
+	line-height: 300rpx;
+	text-align: center;
+	border:1px dashed #000;	
+}
+.edit-title{
+	margin-top: 30rpx;
+	text-align: center;
+}
+.edit-textarea{
+	width: 90%;
+	padding:10rpx 30rpx;
+	margin-bottom: 10rpx;
+	height: 600rpx;
+}
+.edit-strategy{
+	align-self: flex-start;
+	margin-left: 30rpx;
+	width: 50rpx;
+	height: 50rpx;
+}

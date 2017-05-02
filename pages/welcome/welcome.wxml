@@ -1,0 +1,12 @@
+
+<view class="container welcome">
+    <image class="avatar" src="/images/avatar/1.png"></image>
+    <view>
+        <text>
+        Hello,四月
+        </text>
+    </view>
+    <view class="moto-container" bindtap="onTap">
+        开启神秘之旅
+    </view>
+</view>

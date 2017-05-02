@@ -1,0 +1,8 @@
+<template name="dariy-item">
+	<view class="my-dariy-box">
+		<text class="my-dairy-time">{{date}}</text>
+		<view class="my-dairy-text">{{content}}</view>
+		<image class="my-dairy-image" mode="aspectFit" src="{{imgSrc}}"/>
+		<view class="my-circle"></view>
+	</view>
+</template>

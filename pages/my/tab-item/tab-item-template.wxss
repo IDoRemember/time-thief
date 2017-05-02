@@ -1,0 +1,14 @@
+.tab-template-box{
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	height: 100rpx;
+}
+.tab-template-img{
+	width: 50rpx;
+	height: 50rpx;
+	margin-bottom: 10rpx;
+}
+.tab-template-text {
+	font-size: 25rpx;
+}

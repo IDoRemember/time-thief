@@ -1,0 +1,30 @@
+{
+	"pages": [
+		"pages/welcome/welcome",
+		"pages/edit/edit",
+		"pages/my/my",
+		
+		"pages/posts/post"
+		
+		
+		
+	],
+	"tabBar": {
+		"list": [{
+			"pagePath": "pages/posts/post",
+			"selectedIconPath":"images/热气球.png",
+			"iconPath":"images/热气球1.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/edit/edit",
+			"selectedIconPath":"images/riji2.png",
+			"iconPath":"images/riji1.png",
+			"text": "日志"
+		},{
+			"pagePath": "pages/my/my",
+			"selectedIconPath":"images/我的1.png",
+			"iconPath":"images/我的.png",
+			"text": "我的"
+		}]
+	}
+}

@@ -1,0 +1,6 @@
+<template name="tab"> 
+	<view class="tab-template-box">
+		<image src="{{icon}}" class="tab-template-img"/>
+		<text class="tab-template-text">{{title}}</text>
+	</view>
+</template>

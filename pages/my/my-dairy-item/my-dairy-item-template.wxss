@@ -1,0 +1,35 @@
+.my-dariy-box{
+	position: relative;
+	margin-top: 20rpx;
+	color: #303030;
+	padding: 10px;
+	border-radius: 10px;
+	background: #fff;
+}
+.my-dairy-image{
+	max-height: 100%;
+	border-radius:10px;
+}
+.my-circle{
+	position: absolute;
+	top:0;
+	left: -20px;
+	width: 10px;
+	height: 10px;
+	background:#92e2da;
+	border-radius: 50%;
+	border:5px solid #e4f9f0;
+}
+.my-dairy-text{
+	font-size: 30rpx;
+	line-height: 40rpx;
+	color:#666;
+	padding: 5px 0;
+}
+.my-dairy-time{
+	font-size: 30rpx;
+}
+.my-image-box{
+	width: 500rpx;
+	height: 300rpx;
+}
