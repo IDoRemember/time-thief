@@ -1,4 +1,11 @@
-const config = require('config');
+
+//app.js
+"use strict";
+//工具类调用
+const api = require('./utils/api.js'),
+      util = require('./utils/util.js'),
+      config = require('config'),
+      wechat = require('./utils/wechat.js');
 App({
 	globalData: {
     // 设备信息，主要用于获取屏幕尺寸而做适配
@@ -26,6 +33,7 @@ App({
           wx.getUserInfo({
             success: (res) => {
               that.globalData.userInfo = res.userInfo;
+              console.log(res.encryptedData)
               typeof cb == 'function' && cb(that.globalData.userInfo)
             }
           })
@@ -33,4 +41,9 @@ App({
       })
     }
   },
+  cosUrl : "http://imgs-1253624527.costj.myqcloud.com",
+  api: api,
+  util: util,
+  config:config,  
+  wechat: wechat,
 })

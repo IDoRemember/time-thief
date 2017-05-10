@@ -1,0 +1,30 @@
+<view class="container detail-background">
+    <view class="detail-img-box">
+        <image src="{{postData.imgSrc}}" class="detail-img" style="width:100%" mode="scaleToFill"></image>
+    </view>
+    <view class="detail-date">
+        <text style="float:left">{{postData.date}}</text>
+        <text style="float:right">作者:{{postData.author}}</text>
+    </view>
+    <view class="detail-title">
+        {{postData.title}}
+    </view>
+
+    <view class="detail-content">
+        {{postData.content}}
+    </view>
+    <view class="o-container detail-strategy-box">
+        <image src="/images/icon/strategy.png" class="detail-strategy" mode="aspectFit"></image>
+        <view class="detail-address">
+            {{postData.address}}
+        </view>
+        <image src="/images/icon/strategy.png" class="detail-strategy" mode="aspectFit"></image>
+        <view class="detail-address">
+            {{postData.address}}
+        </view>
+        <image src="/images/icon/strategy.png" class="detail-strategy" mode="aspectFit"></image>
+        <view class="detail-address">
+            {{postData.address}}
+        </view>
+    </view>
+</view>

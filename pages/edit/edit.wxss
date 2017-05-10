@@ -2,12 +2,9 @@
 	background: #fff;
 }
 .edit-image{
-	margin-top: 30rpx;
-	width: 90%;
-	height:300rpx;
-	line-height: 300rpx;
-	text-align: center;
-	border:1px dashed #000;	
+	width:200rpx;
+	height: 200rpx;
+	background: url("images/热气球1.png")
 }
 .edit-title{
 	margin-top: 30rpx;
@@ -21,7 +18,23 @@
 }
 .edit-strategy{
 	align-self: flex-start;
-	margin-left: 30rpx;
-	width: 50rpx;
-	height: 50rpx;
+	margin-right: 10rpx;
+	width: 30rpx;
+	height: 30rpx;
+}
+.edit-address {
+	display: inline-block;
+}
+.edit-address-box {
+	font-size: 26rpx;
+}
+.edit-image-show{
+	width:200rpx;
+	height:200rpx;
+	margin:10rpx;
+	border-radius: 5rpx;
+}
+.edit-img-box {
+	margin-top:30rpx;
+	font-size: 26px;
 }

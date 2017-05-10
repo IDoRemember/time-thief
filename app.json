@@ -3,11 +3,8 @@
 		"pages/welcome/welcome",
 		"pages/edit/edit",
 		"pages/my/my",
-		
-		"pages/posts/post"
-		
-		
-		
+		"pages/posts/post",
+		"pages/detail/detail"
 	],
 	"tabBar": {
 		"list": [{
