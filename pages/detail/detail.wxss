@@ -4,7 +4,6 @@
 .detail-img-box {
     position: relative;
     width:100%;
-    height: 350rpx;
     text-align: center;
     overflow: hidden;
 }
@@ -45,11 +44,41 @@
 .detail-strategy {
     width: 30rpx;
     height: 30rpx;
+    vertical-align: middle;
 }
 .detail-address {
+    display: inline-block;
     color:#749ccf;
     font-size: 24rpx;
+    vertical-align: middle;
 }
 .detail-strategy-box {
     width:95%;
+}
+.detail-zan {
+    width:30rpx;
+    height: 30rpx;
+    vertical-align: middle;
+}
+.detail-zan-number {
+    display: inline-block;
+    vertical-align: middle;
+    color:#3f3f3f;
+    font-size: 24rpx;
+}
+.detail-img-end {
+    margin-top: 100rpx;
+    height: 150rpx;   
+    position: relative;
+}
+.detail-text-end {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    z-index: 1000;
+    color: #fff;
+    line-height: 150rpx;
 }

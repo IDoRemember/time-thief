@@ -8,4 +8,7 @@ Page({
         console.log(this.data.postData)
         
 	},
+	dianzan(){
+		
+	}
 })

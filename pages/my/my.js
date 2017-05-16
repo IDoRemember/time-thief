@@ -1,6 +1,6 @@
 var app = getApp();
 var dairyData = require('../../data/dairy-data.js')
-var iconPath = "/images/icon/"
+var iconPath = "http://images-1253624527.cossh.myqcloud.com/images/icon/"
 var tabs = [
     {
         icon: iconPath + "mark.png",
@@ -31,6 +31,7 @@ Page({
 	data:{
 		tabs: tabs,
 		currentTab:0,
+        userInfo:wx.getStorageSync('userInfo')
 	},
 	touchTab: function(event){
         var tabIndex = parseInt(event.currentTarget.id);
@@ -42,17 +43,12 @@ Page({
         });
     },
 	onLoad:function() {
-		console.log('hahah');
 		var that = this;
-		app.getUserInfo(info => {
-			that.setData({
-				'diary.meta.avatar': info.avatarUrl,
-				'diary.meta.nickName': info.nickName,
-			})
-		})
         this.setData({
+            userInfo:wx.getStorageSync('userInfo'),
             dairyList:dairyData.dairyList
         })
+        console.log(wx.getStorageSync('userInfo'))
 	},
     onChooseTap:function(event){
         this.setData({currentTab:event.currentTarget.dataset.tabid})
@@ -63,7 +59,7 @@ Page({
 		wx.chooseImage({
 			count: 1, // 默认9
 			sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-			sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+			sourceType: ['album', 'camera'], // 可以指定来源是相册还是photo，默认二者都有
 			success:  (res)=> {
 				// 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
 				that.setData({

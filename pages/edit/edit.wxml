@@ -2,14 +2,20 @@
 	<input type="text" placeholder="标题" class="edit-title" />
 	<textarea placeholder="正文" maxlength="-1" class="edit-textarea" auto-focus />
 	<view class="o-container edit-address-box">
-		<image src="/images/icon/strategy.png" class="edit-strategy" catchtap="getlocation" />
+		<view class="edit-check edit-check-active">
+			<view class="edit-check-circle"></view>	
+		</view>隐私
+		
+	</view>
+	<view class="o-container edit-address-box">
+		<image src="http://images-1253624527.cossh.myqcloud.com/images/icon/strategy.png" class="edit-strategy" catchtap="getlocation" />
 		<view wx:if="{{!address}}">所在位置</view>
 		<view class="edit-address" bindtap="">
 			{{address}}
 		</view>
 	</view>
-	<view class="o-container edit-address-box" style="margin-top: 20rpx;" bindtap="chooseImg">
-		<image src="/images/相机.png" class="edit-strategy" mode="aspectFit" />
+	<view class="o-container edit-address-box"  bindtap="chooseImg">
+		<image src="http://images-1253624527.cossh.myqcloud.com/images/photo.png" class="edit-strategy" mode="aspectFit" />
 		选择图片
 	</view>
 	<view class="o-container edit-img-box">

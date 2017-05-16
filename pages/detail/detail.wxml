@@ -1,30 +1,42 @@
 <view class="container detail-background">
     <view class="detail-img-box">
-        <image src="{{postData.imgSrc}}" class="detail-img" style="width:100%" mode="scaleToFill"></image>
+        <swiper vertical="true" indicator-dots="true" autoplay="true">
+            <swiper-item>
+                <image src="{{postData.imgSrc}}" class="detail-img" style="width:100%" mode="scaleToFill"></image>
+            </swiper-item>
+        </swiper>
     </view>
     <view class="detail-date">
-        <text style="float:left">{{postData.date}}</text>
-        <text style="float:right">作者:{{postData.author}}</text>
+        <view style="float:left">{{postData.date}}</view>
+        <view style="float:right">作者:{{postData.author}}</view>
     </view>
     <view class="detail-title">
         {{postData.title}}
     </view>
 
     <view class="detail-content">
-        {{postData.content}}
+        {{postData.detail}}
     </view>
-    <view class="o-container detail-strategy-box">
-        <image src="/images/icon/strategy.png" class="detail-strategy" mode="aspectFit"></image>
-        <view class="detail-address">
-            {{postData.address}}
+    <view class=" detail-strategy-box">
+        <view style="float:left;">
+            <image src="http://images-1253624527.cossh.myqcloud.com/images/icon/strategy.png" class="detail-strategy" mode="aspectFit"></image>
+            <view class="detail-address">
+                {{postData.address}}
+            </view>
         </view>
-        <image src="/images/icon/strategy.png" class="detail-strategy" mode="aspectFit"></image>
-        <view class="detail-address">
-            {{postData.address}}
+        <view style="float:right;">
+            <image src="http://images-1253624527.cossh.myqcloud.com/images/icon/%E8%B5%9E.png" class="detail-zan" mode="aspectFit"></image>
+            <view class="detail-zan-number">
+                {{postData.address}}
+            </view>
+            <image src="http://images-1253624527.cossh.myqcloud.com/images/icon/%E6%9F%A5%E7%9C%8B.png" class="detail-zan" catchTap="dianzan" mode="aspectFit"></image>
+            <view class="detail-zan-number">
+                {{postData.address}}
+            </view>
         </view>
-        <image src="/images/icon/strategy.png" class="detail-strategy" mode="aspectFit"></image>
-        <view class="detail-address">
-            {{postData.address}}
-        </view>
+    </view>
+    <view class="detail-img-box detail-img-end">
+        <image src="{{postData.imgSrc}}" class="detail-img" style="width:100%" mode="scaleToFill"></image>
+        <view class="detail-text-end">the end</view>
     </view>
 </view>

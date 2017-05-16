@@ -1,12 +1,12 @@
 
 <view class="container welcome">
-    <image class="avatar" src="/images/avatar/1.png"></image>
+    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
     <view>
         <text>
-        Hello,四月
+        Hello,{{userInfo.nickName}}
         </text>
     </view>
     <view class="moto-container" bindtap="onTap">
-        开启神秘之旅
+        开启岁月神偷匣子
     </view>
 </view>
