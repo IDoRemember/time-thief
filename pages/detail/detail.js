@@ -1,14 +1,28 @@
 var postsData = require('../../data/posts-data.js')
 Page({
-	onLoad:function(params){
-        const id = params["id"];
-		this.setData({
-			postData:postsData.postList[id]
-		});
-        console.log(this.data.postData)
-        
+	data:{
+		postData:{}
 	},
-	dianzan(){
-		
+	onLoad: function (params) {
+		const that = this ;
+		const id = params["postid"];
+		wx.request({
+			url: 'https://57113555.qcloud.la/onedairy',
+			data: {
+				postid: id
+			},
+			method: 'GET',
+			success: function (res) {
+				console.log(res.data)
+				that.setData({
+					postData:res.data[0]
+				})
+			}
+		})
+		console.log(that.data.postData)
+
+	},
+	dianzan() {
+
 	}
 })

@@ -1,16 +1,16 @@
 <view class="container edit-container">
-	<input type="text" placeholder="标题" class="edit-title" />
-	<textarea placeholder="正文" maxlength="-1" class="edit-textarea" auto-focus />
+	<input type="text" placeholder="标题" class="edit-title" bindinput="settitle"/>
+	<textarea placeholder="正文" maxlength="-1" class="edit-textarea" auto-focus bindinput="setcontent"/>
 	<view class="o-container edit-address-box">
-		<view class="edit-check edit-check-active">
-			<view class="edit-check-circle"></view>	
+		<view class="edit-check edit-check-active" bindtap="setsecret">
+			<view wx:if="{{secret}}" class="edit-check-circle"></view>	
 		</view>隐私
 		
 	</view>
 	<view class="o-container edit-address-box">
 		<image src="http://images-1253624527.cossh.myqcloud.com/images/icon/strategy.png" class="edit-strategy" catchtap="getlocation" />
 		<view wx:if="{{!address}}">所在位置</view>
-		<view class="edit-address" bindtap="">
+		<view class="edit-address" bindtap="getlocation">
 			{{address}}
 		</view>
 	</view>
@@ -25,5 +25,5 @@
 			</view>
 		</block>
 	</view>
-	<button from-type="submit" size="default">提交</button>
+	<button from-type="submit" size="default" bindtap="submit">提交</button>
 </view>

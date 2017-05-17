@@ -5,7 +5,12 @@
 const api = require('./utils/api.js'),
   util = require('./utils/util.js'),
   config = require('config'),
-  wechat = require('./utils/wechat.js');
+  wechat = require('./utils/wechat.js'),
+  AV = require('./libs/av-weapp-min.js');
+AV.init({
+  appId: 'QeATmbCz8P9yAke6Wh45aeuP-gzGzoHsz',
+  appKey: 'nnfbIv5gm3JzjjxyEDNl9T41',
+});
 App({
   globalData: {
     appid: 'wx66bc2e44b7717416',
@@ -57,8 +62,8 @@ App({
                       url: 'https://57113555.qcloud.la/auth',
                       data: {
                         openid: res.data.openid,
-                        uname:objz.nickName,
-                        avatarUrl:objz.avatarUrl
+                        uname: objz.nickName,
+                        avatarUrl: objz.avatarUrl
                       },
                       method: 'GET',
                       success: function (res) {
@@ -81,4 +86,5 @@ App({
   util: util,
   config: config,
   wechat: wechat,
+  AV:AV
 })
