@@ -5,7 +5,7 @@ var tabs = [
     {
         icon: iconPath + "mark.png",
         iconActive: iconPath + "markHL.png",
-        title: "日记",
+        title: "印记",
         extraStyle: "",
     },
     {

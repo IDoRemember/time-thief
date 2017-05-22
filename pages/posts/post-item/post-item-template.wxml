@@ -2,20 +2,20 @@
 	<view  class="post-container">
 		<view class="post-author-date">
 		<image class="post-author" mode="aspectFit" src="{{avatar}}"></image>
-			<text class="post-date">{{date}}</text>
+			<text class="post-date">{{datetime}}</text>
 		</view>
 		<text class="post-title">{{title}}</text>
-		<image class="post-image" mode="aspectFill" src="{{imgSrc}}">{{post_img}}</image>
+		<image class="post-image" mode="aspectFill" src="{{imgs}}"></image>
 		<text class="post-content">{{content}}
 		</text>
-		<view class="post-like">
+		<view class="post-like o-container ">
 			<image class="post-like-image" 
-			src="http://images-1253624527.cossh.myqcloud.com/images/icon/strategy.png" mode="aspectFit"></image>
-			<text class="post-like-font">{{collection}}</text>
+			src="http://images-1253624527.cossh.myqcloud.com/images/icon/collect.png" mode="aspectFit"></image>
+			<view class="post-like-font">{{collection}}</view>
 
 			<image class="post-like-image" 
-			src="http://images-1253624527.cossh.myqcloud.com/images/icon/strategy.png" mode="aspectFit"></image>
-			<text class="post-like-font">{{reading}}</text>
+			src="http://images-1253624527.cossh.myqcloud.com/images/icon/%E6%9F%A5%E7%9C%8B.png" mode="aspectFit"></image>
+			<view class="post-like-font">{{reading}}</view>
 		</view>
 	</view>
 </template>

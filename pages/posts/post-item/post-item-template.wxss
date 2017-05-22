@@ -54,8 +54,8 @@
     line-height: 40rpx;
 }
 .post-like{
-    font-size:13px;
-    line-height: 16px;
+    font-size:24rpx;
+    height: 30rpx;
     margin-left: 10px;
 }
 
@@ -67,7 +67,9 @@
 }
 
 .post-like-font{
-    vertical-align:middle;
+    margin-top: 5px;
     margin-right: 20px;
+    line-height: 30rpx;
+    vertical-align:middle;
 }
 

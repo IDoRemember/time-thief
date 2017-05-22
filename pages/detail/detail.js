@@ -14,8 +14,10 @@ Page({
 			method: 'GET',
 			success: function (res) {
 				console.log(res.data)
+				let imgs= res.data[0].imgs.split(',')
 				that.setData({
-					postData:res.data[0]
+					postData:res.data[0],
+					imgs:imgs
 				})
 			}
 		})

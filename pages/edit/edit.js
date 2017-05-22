@@ -103,7 +103,7 @@ Page({
 				secret: this.data.secret + '',
 				content: this.data.content + '',
 				address: this.data.address + '',
-				netFiles: this.data.netFiles + '',
+				netFiles: this.data.netFiles.join(","),
 				date: util.formatTime(new Date),
 				postId: Date.now(),
 				datetime: util.getLocalDateTime(Date.now())
