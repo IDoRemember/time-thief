@@ -1,17 +1,18 @@
 <import src="post-item/post-item-template.wxml" />
 <view class="container">
-    <swiper vertical="false" indicator-dots="true" autoplay="true">
-        <swiper-item>
-            <image class=" banner-img" mode="aspectFit" src="http://images-1253624527.cossh.myqcloud.com/images/banana.jpg" />
-        </swiper-item>
-        <swiper-item>
-            <image class=" banner-img" mode="aspectFit" src="http://images-1253624527.cossh.myqcloud.com/images/chuipaopao.jpg" />
-        </swiper-item>
-        <swiper-item>
-            <image class=" banner-img" mode="aspectFit" src="http://images-1253624527.cossh.myqcloud.com/images/haibian.jpg" />
-        </swiper-item>
-    </swiper>
-    <scroll-view scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" bindscrolltolower="handleLoadMore">
+    <scroll-view scroll-x="false" scroll-y="true"  style="height:{{scrollHeight}}px"  lower-threshold="10" bindscrolltolower="handleLoadMore">
+        <swiper vertical="false" indicator-dots="true" autoplay="true">
+            <swiper-item>
+                <image class=" banner-img" mode="aspectFit" src="http://images-1253624527.cossh.myqcloud.com/images/banana.jpg" />
+            </swiper-item>
+            <swiper-item>
+                <image class=" banner-img" mode="aspectFit" src="http://images-1253624527.cossh.myqcloud.com/images/chuipaopao.jpg" />
+            </swiper-item>
+            <swiper-item>
+                <image class=" banner-img" mode="aspectFit" src="http://images-1253624527.cossh.myqcloud.com/images/haibian.jpg" />
+            </swiper-item>
+        </swiper>
+
         <block wx:for="{{postList}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}">
             <view data-postid="{{item.postid}}" catchtap="showDetail">
                 <template is="postItem" data="{{...item}}" />

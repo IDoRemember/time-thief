@@ -2,45 +2,83 @@ var postsData = require('../../data/posts-data.js')
 Page({
 	data: {
 		page: 1,
-		size: 10,
-		list1: [],
-		list2: [],
-		hasMore: false
+		size: 5,
+		hasMore: true,
+		postlist: [],
+		scrollHeight:500
 	},
 	handleLoadMore: function () {
-		const self = this;
-		if (self.data.hasMore) {
+		const that = this;
+		console.log("111")
+		if (that.data.hasMore) {
 			//接口
+			console.log("222")
+			wx.request({
+				url: 'https://57113555.qcloud.la/dairylist',
+				data: {
+					start: (that.data.page) * 5
+				},
+				method: 'GET',
+				success: function (res) {
+					let postlist = res.data
+					if (postlist.length != 0) {
+						for (let i = 0; i < postlist.length; i++) {
+							if (postlist[i]['imgs']) {
+								postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+							}
+						}
+						that.setData({
+							postList: that.data.postList.concat(postlist),
+							page: that.data.page++
+						})
+					} else {
+						that.setData({
+							hasMore: false
+						})
+					}
+				}
+			})
 		}
 	},
 	onLoad: function () {
 		const that = this;
-		wx.request({
-			url: 'https://57113555.qcloud.la/dairylist',
-			data: {
-			},
-			method: 'GET',
-			success: function (res) {
-				console.log(res.data)
-				// let imgs= res.data.imgs.split(',')
-				let postlist = res.data
-				for (let i = 0; i < postlist.length; i++) {
-					if(postlist[i]['imgs'] ) {
-						postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+		console.log(that.data.hasMore)
+		if (!that.data.postList) {
+			wx.request({
+				url: 'https://57113555.qcloud.la/dairylist',
+				data: {
+					start: 0
+				},
+				method: 'GET',
+				success: function (res) {
+					console.log(res.data)
+					// let imgs= res.data.imgs.split(',')
+					let postlist = res.data
+					for (let i = 0; i < postlist.length; i++) {
+						if (postlist[i]['imgs']) {
+							postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+						}
 					}
+					that.setData({
+						postList: postlist
+					})
 				}
+			})
+			if (this.data.postList) {
+				let postlist = this.data.postList
+				for (let i = 0; i < this.data.postList.length; i++) {
+					postlist[i]['imgs'] = postList[i].imgs.split(',')[0]
+				}
+			}
+		}
+		wx.getSystemInfo({
+			success: function (res) {
 				that.setData({
-					postList: postlist
+					scrollHeight: res.windowHeight
 				})
 			}
 		})
-		if (this.data.postList) {
-			let postlist = this.data.postList
-			for (let i = 0; i < this.data.postList.length; i++) {
-				postlist[i]['imgs'] = postList[i].imgs.split(',')[0]
-			}
 
-		}
 	},
 	onPostTap: function (event) {
 		console.log(event.currentTarget.dataset.postid);
