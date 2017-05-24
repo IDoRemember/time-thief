@@ -9,7 +9,6 @@ Page({
 	},
 	handleLoadMore: function () {
 		const that = this;
-		console.log("111")
 		if (that.data.hasMore) {
 			//接口
 			console.log("222")
@@ -20,6 +19,7 @@ Page({
 				},
 				method: 'GET',
 				success: function (res) {
+					console.log(res.data)
 					let postlist = res.data
 					if (postlist.length != 0) {
 						for (let i = 0; i < postlist.length; i++) {
@@ -28,8 +28,8 @@ Page({
 							}
 						}
 						that.setData({
-							postList: that.data.postList.concat(postlist),
-							page: that.data.page++
+							page: that.data.page+1,
+							postList: that.data.postList.concat(postlist)
 						})
 					} else {
 						that.setData({
@@ -42,7 +42,6 @@ Page({
 	},
 	onLoad: function () {
 		const that = this;
-		console.log(that.data.hasMore)
 		if (!that.data.postList) {
 			wx.request({
 				url: 'https://57113555.qcloud.la/dairylist',
