@@ -93,9 +93,7 @@ Page({
 			wx.getStorageSync('userInfo').nickName,
 			wx.getStorageSync('userInfo').avatarUrl
 		)
-		wx.request({
-			url: 'https://57113555.qcloud.la/dairy',
-			data: {
+		let dataObj={
 				openid: wx.getStorageSync('user').openid + '',
 				uname: wx.getStorageSync('userInfo').nickName + '',
 				avatarUrl: wx.getStorageSync('userInfo').avatarUrl + '',
@@ -106,8 +104,12 @@ Page({
 				netFiles: this.data.netFiles.join(","),
 				date: util.formatTime(new Date),
 				postId: Date.now(),
-				datetime: util.getLocalDateTime(Date.now())
-			},
+				datetime: util.formatTime(new Date)
+		}
+		wx.setStorageSync('newdairy',dataObj)
+		wx.request({
+			url: 'https://57113555.qcloud.la/dairy',
+			data: dataObj,
 			method: 'POST',
 			success: function (res) {
 				console.log(res)

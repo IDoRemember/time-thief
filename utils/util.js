@@ -45,7 +45,7 @@ function getLocalDateTime(utcTimeStamp, beFull) {
             } else {
                 const hourC = diffValue / hour
                 if (hourC >= 1) {
-                    return parseInt(hourC) + '时前'
+                    return parseInt(hourC) + '小时前'
                 }
                 else {
                     const minC = diffValue / minute

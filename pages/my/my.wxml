@@ -1,7 +1,7 @@
 <import src="tab-item/tab-item-template.wxml"/>
 <import src="my-dairy-item/my-dairy-item-template.wxml"/>
 <view class="container">
-	<view class="my-top-box" catchtap="onTopTap" >
+	<view class="my-top-box" catchtap="onTopTap" style="background:url({{netFile}}) 100%;">
 		<image src="{{userInfo.avatarUrl}}" class="my-avatar"/>
 		<text class="my-nickname">{{userInfo.nickName}}</text>
 	</view>
@@ -17,7 +17,7 @@
 	</view>
 	<view class="my-dairy-box {{currentTab == 0 ? 'active' : ''}}">
 		<block wx:for="{{dairyList}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}">  
-			<template is="dariy-item" data="{{...item}}"  data-postid="{{idx}}" />
+			<template is="dariy-item" data="{{...item}}"  />
 		</block>
 	</view>
 </view>

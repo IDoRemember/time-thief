@@ -20,7 +20,7 @@
         </block>
         <view class="tips">
             <view wx:if="{{ hasMore }}">
-                <image class="tips_load" src="http://images-1253624527.cossh.myqcloud.com/images/icon/strategy.png" />
+                <image class="tips_load" src="http://loading-1253624527.costj.myqcloud.com/loading.gif" />
                 <text class="tips_text">玩了命的加载中...</text>
             </view>
             <view wx:else>

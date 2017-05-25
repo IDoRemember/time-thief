@@ -1,8 +1,8 @@
 <template name="dariy-item">
-	<view class="my-dariy-box">
+	<view class="my-dariy-box"  catchtap="toDetail"  data-postid="{{postid}}">
 		<text class="my-dairy-time">{{date}}</text>
 		<view class="my-dairy-text">{{content}}</view>
-		<image class="my-dairy-image" mode="aspectFit" src="{{imgSrc}}"/>
+		<image class="my-dairy-image" mode="aspectFit" src="{{imgs}}"/>
 		<view class="my-circle"></view>
 	</view>
 </template>

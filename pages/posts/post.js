@@ -1,17 +1,17 @@
-var postsData = require('../../data/posts-data.js')
+var postsData = require('../../data/posts-data.js'),
+	util = require('../../utils/util.js')
 Page({
 	data: {
 		page: 1,
 		size: 5,
 		hasMore: true,
-		postlist: [],
-		scrollHeight:500
+		postList: null,
+		scrollHeight: 500
 	},
 	handleLoadMore: function () {
 		const that = this;
 		if (that.data.hasMore) {
 			//接口
-			console.log("222")
 			wx.request({
 				url: 'https://57113555.qcloud.la/dairylist',
 				data: {
@@ -25,19 +25,37 @@ Page({
 						for (let i = 0; i < postlist.length; i++) {
 							if (postlist[i]['imgs']) {
 								postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+								postlist[i]['datetime'] = util.getLocalDateTime(postlist[i]['postid'])
 							}
 						}
 						that.setData({
-							page: that.data.page+1,
+							page: that.data.page + 1,
 							postList: that.data.postList.concat(postlist)
 						})
 					} else {
 						that.setData({
-							hasMore: false
+							hasMore: false,
 						})
 					}
 				}
 			})
+		}
+	},
+	onReady: function () {
+
+		const that = this
+		if (that.data && that.data.postList) {
+			let timer = setInterval(function () {
+				let list = that.data.postList
+				for (let i = 0;i< list.length;i++) {
+					if (list[i]['datetime']) {
+						list[i]['datetime'] = util.getLocalDateTime(list[i]['postid'])
+						that.setData({
+							postList:list
+						})
+					}
+				}
+			}, 1000);
 		}
 	},
 	onLoad: function () {
@@ -55,7 +73,8 @@ Page({
 					let postlist = res.data
 					for (let i = 0; i < postlist.length; i++) {
 						if (postlist[i]['imgs']) {
-							postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+							postlist[i]['imgs'] = postlist[i].imgs.split(',')[0];
+							postlist[i]['datetime'] = util.getLocalDateTime(postlist[i]['postid'])
 						}
 					}
 					that.setData({
@@ -77,7 +96,6 @@ Page({
 				})
 			}
 		})
-
 	},
 	onPostTap: function (event) {
 		console.log(event.currentTarget.dataset.postid);

@@ -7,11 +7,17 @@
     text-align: center;
     overflow: hidden;
 }
-.detail-img {
+.bottom-img {
     width:100%;
     position: absolute;
     left: 0;
     bottom:0;
+    z-index: 1;
+}
+.detail-img {
+    width:100%;
+    height: 150px;
+    margin: auto 0;
     z-index: 1;
 }
 .detail-title {
@@ -58,6 +64,7 @@
 .detail-zan {
     width:30rpx;
     height: 30rpx;
+    margin: 0 5px;
     vertical-align: middle;
 }
 .detail-zan-number {

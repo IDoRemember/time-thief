@@ -3,7 +3,7 @@
         <swiper vertical="true" indicator-dots="true" autoplay="true">
             <block wx:for="{{imgs}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}">
                 <swiper-item>
-                    <image src="{{item}}" class="detail-img" style="width:100%" mode="scaleToFill"></image>
+                    <image src="{{item}}" class="detail-img" style="width:100%" mode="aspectFill"></image>
                 </swiper-item>
             </block>
         </swiper>
@@ -27,19 +27,21 @@
             </view>
         </view>
         <view style="float:right;">
-            <image src="http://images-1253624527.cossh.myqcloud.com/images/icon/%E8%B5%9E.png" class="detail-zan" mode="aspectFit"></image>
+            <image src="http://images-1253624527.cossh.myqcloud.com/images/icon/%E8%B5%9E.png" class="detail-zan" mode="aspectFit" catchtap="onLike"></image>
             <view class="detail-zan-number">
                 {{postData.like}}
             </view>
-            <image src="http://images-1253624527.cossh.myqcloud.com/images/icon/%E6%9F%A5%E7%9C%8B.png" class="detail-zan" catchTap="dianzan"
+            <image src="http://images-1253624527.cossh.myqcloud.com/images/icon/%E6%9F%A5%E7%9C%8B.png" class="detail-zan"
                 mode="aspectFit"></image>
             <view class="detail-zan-number">
-                {{postData.reading}}
+                {{view}}
             </view>
+            <image class="detail-zan" src="http://images-1253624527.cossh.myqcloud.com/images/icon/collect.png" mode="aspectFit" catchtap="onCollection"></image>
+            <view class="detail-zan-number">{{postData.collection}}</view>
         </view>
     </view>
     <view class="detail-img-box detail-img-end">
-        <image src="{{imgs[0]}}" class="detail-img" style="width:100%" mode="scaleToFill"></image>
+        <image src="{{imgs[0]}}" class="bottom-img" style="width:100%" mode="scaleToFill"></image>
         <view class="detail-text-end">the end</view>
     </view>
 </view>
