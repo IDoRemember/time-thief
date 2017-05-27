@@ -1,23 +1,37 @@
-<import src="tab-item/tab-item-template.wxml"/>
-<import src="my-dairy-item/my-dairy-item-template.wxml"/>
+<import src="tab-item/tab-item-template.wxml" />
+<import src="my-dairy-item/my-dairy-item-template.wxml" />
+<import src="../posts/post-item/post-item-template.wxml" />
+
 <view class="container">
-	<view class="my-top-box" catchtap="onTopTap" style="background:url({{netFile}}) 100%;">
-		<image src="{{userInfo.avatarUrl}}" class="my-avatar"/>
-		<text class="my-nickname">{{userInfo.nickName}}</text>
-	</view>
-	<view  class="my-tab-box">
-		<block wx:for="{{tabs}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}">  
-			<view catchtap="onChooseTap" data-tabid="{{idx}}">
-				<view class="tab-template-box">
-				<image src="{{currentTab == idx ? item.iconActive: item.icon}}" class="tab-template-img "/>
-				<text class="tab-template-text">{{item.title}}</text>
+	<scroll-view scroll-x="false" scroll-y="true" style="height:{{scrollHeight}}px" lower-threshold="10" bindscrolltolower="handleLoadMore">
+		<view class="my-top-box" catchtap="onTopTap" style="background:url({{netFile}}) 100%;">
+			<image src="{{userInfo.avatarUrl}}" class="my-avatar" />
+			<text class="my-nickname">{{userInfo.nickName}}</text>
+		</view>
+		<view class="my-tab-box">
+			<block wx:for="{{tabs}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}">
+				<view catchtap="onChooseTap" data-tabid="{{idx}}">
+					<view class="tab-template-box">
+						<image src="{{currentTab == idx ? item.iconActive: item.icon}}" class="tab-template-img " />
+						<text class="tab-template-text">{{item.title}}</text>
+					</view>
 				</view>
-			</view>
-		</block>
-	</view>
-	<view class="my-dairy-box {{currentTab == 0 ? 'active' : ''}}">
-		<block wx:for="{{dairyList}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}">  
-			<template is="dariy-item" data="{{...item}}"  />
-		</block>
-	</view>
+			</block>
+		</view>
+		<view class="my-dairy-box {{currentTab == 0 ? 'active' : ''}}">
+			<block wx:for="{{dairyList}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}">
+				<template is="dariy-item" data="{{...item}}" />
+			</block>
+		</view>
+		<view class=" my-like-box {{currentTab == 1 ? 'active' : ''}}">
+			<block wx:for="{{collectList}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}">
+				<template is="postItem" data="{{...item}}" />
+			</block>
+		</view>
+		<view class=" my-like-box {{currentTab == 2 ? 'active' : ''}}">
+			<block wx:for="{{likeList}}" wx:for-item="item" wx:for-index="idx" wx:key="{{idx}}">
+				<template is="postItem" data="{{...item}}" />
+			</block>
+		</view>
+	</scroll-view>
 </view>

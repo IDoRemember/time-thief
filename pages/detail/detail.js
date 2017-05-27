@@ -27,11 +27,51 @@ Page({
 				})
 			}
 		})
-		console.log(that.data.postData)
+		wx.request({
+			url: 'https://57113555.qcloud.la/haslike',
+			data: {
+				postid: id,
+				uid: wx.getStorageSync('user').openid
+			},
+			method: 'GET',
+			success: function (res) {
+				console.log(res.data)
+				if (res.data.length == 0) {
+					that.setData({
+						isLike: true
+					})
+				} else {
+					that.setData({
+						isLike: false
+					})
+				}
+			}
+		})
+
+		wx.request({
+			url: 'https://57113555.qcloud.la/hascollected',
+			data: {
+				postid: id,
+				uid: wx.getStorageSync('user').openid
+			},
+			method: 'GET',
+			success: function (res) {
+				console.log(res.data)
+				if (res.data.length == 0) {
+					that.setData({
+						isCollection: true
+					})
+				} else {
+					that.setData({
+						isCollection: false
+					})
+				}
+			}
+		})
 	},
 	onLike: function () {
-		console.log('111')
 		if (this.data.isLike) {
+			console.log('111')
 			let data = this.data.postData;
 			data.like = data.like + 1;
 			this.setData({
@@ -43,25 +83,30 @@ Page({
 	},
 	onCollection: function () {
 		if (this.data.isCollection) {
+			console.log('222')
 			let data = this.data.postData;
 			data.collection = data.collection + 1;
 			this.setData({
 				postData: data,
-				isCollection:false
+				isCollection: false
 			})
 		}
 
 	},
 	onUnload: function () {
 		const that = this;
+		let dataobj = {
+			postid: that.data.postData.postid,
+			like: that.data.postData.like,
+			uid: wx.getStorageSync('user').openid,
+			reading: that.data.postData.reading,
+			collection: that.data.postData.collection,
+			isCollection: that.data.isCollection,
+			isLike: that.data.isLike
+		};
 		wx.request({
 			url: 'https://57113555.qcloud.la/mergedata',
-			data: {
-				postid: that.data.postData.postid,
-				like: that.data.postData.like,
-				reading: that.data.postData.reading,
-				collection: that.data.postData.collection
-			},
+			data: dataobj,
 			method: 'POST',
 			success: function (res) {
 				console.log(res.data)

@@ -1,5 +1,6 @@
 @import "tab-item/tab-item-template.wxss";
 @import "my-dairy-item/my-dairy-item-template.wxss";
+@import "../posts/post-item/post-item-template.wxss";
 .my-avatar{
 	width:100rpx;
 	height:100rpx;
@@ -36,6 +37,12 @@
 	margin-right: 20rpx;
 	padding: 10px;
 	border-left: 1px solid #bbb;
+}
+.my-like-box {
+	display: none;
+	flex-direction:column;
+	width:100%;
+	padding: 10px;
 }
 .active{
 	display: flex;

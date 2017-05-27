@@ -100,8 +100,8 @@ Page({
 				title: this.data.title + '',
 				secret: this.data.secret + '',
 				content: this.data.content + '',
-				address: this.data.address + '',
-				netFiles: this.data.netFiles.join(","),
+				address: this.data.address?this.data.address+'':'未定位',
+				netFiles: this.data.netFiles?this.data.netFiles.join(","):'http://images-1253624527.picsh.myqcloud.com/banana.jpg',
 				date: util.formatTime(new Date),
 				postId: Date.now(),
 				datetime: util.formatTime(new Date)

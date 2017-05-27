@@ -33,7 +33,9 @@ Page({
     data: {
         tabs: tabs,
         currentTab: 0,
-        n:0,
+        n: 0,
+        scrollHeight: 500,
+        postList: [],
         netFile: 'http://images-1253624527.picsh.myqcloud.com/banana.jpg',
         userInfo: wx.getStorageSync('userInfo')
     },
@@ -59,9 +61,8 @@ Page({
             let newpostList = this.data.postList.push(newPostList)
             this.setData({
                 postList: newpostList,
-                n:1
+                n: 1
             })
-            n++;
         }
     },
     onLoad: function () {
@@ -88,8 +89,59 @@ Page({
                 }
             }
         })
+        wx.request({
+            url: 'https://57113555.qcloud.la/collection',
+            data: {
+                uid: wx.getStorageSync('user').openid
+            },
+            method: 'GET',
+            success: function (res) {
+                console.log(res.data)
+                let postlist = res.data
+                if (postlist.length != 0) {
+                    for (let i = 0; i < postlist.length; i++) {
+                        if (postlist[i]['imgs']) {
+                            postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+                            postlist[i]['datetime'] = util.getLocalDateTime(postlist[i]['postid'])
+                        }
+                    }
+                    that.setData({
+                        collectList: postlist
+                    })
+                }
+            }
+        })
+        wx.request({
+            url: 'https://57113555.qcloud.la/like',
+            data: {
+                uid: wx.getStorageSync('user').openid
+            },
+            method: 'GET',
+            success: function (res) {
+                console.log(res.data)
+                let postlist = res.data
+                if (postlist.length != 0) {
+                    for (let i = 0; i < postlist.length; i++) {
+                        if (postlist[i]['imgs']) {
+                            postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+                            postlist[i]['datetime'] = util.getLocalDateTime(postlist[i]['postid'])
+                        }
+                    }
+                    that.setData({
+                        likeList: postlist
+                    })
+                }
+            }
+        })
         this.setData({
             userInfo: wx.getStorageSync('userInfo'),
+        })
+        wx.getSystemInfo({
+            success: function (res) {
+                that.setData({
+                    scrollHeight: res.windowHeight
+                })
+            }
         })
     },
     onChooseTap: function (event) {
@@ -99,6 +151,85 @@ Page({
     toDetail: function (event) {
         wx.navigateTo({
             url: '../detail/detail?postid=' + event.currentTarget.dataset.postid
+        })
+    },
+    handleLoadMore: function (event) {
+        var that = this;
+        wx.request({
+            url: 'https://57113555.qcloud.la/mydairy',
+            data: {
+                uid: wx.getStorageSync('user').openid
+            },
+            method: 'GET',
+            success: function (res) {
+                console.log(res.data)
+                let postlist = res.data
+                if (postlist.length != 0) {
+                    for (let i = 0; i < postlist.length; i++) {
+                        if (postlist[i]['imgs']) {
+                            postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+                            postlist[i]['datetime'] = util.getLocalDateTime(postlist[i]['postid'])
+                        }
+                    }
+                    that.setData({
+                        dairyList: postlist
+                    })
+                }
+            }
+        })
+        wx.request({
+            url: 'https://57113555.qcloud.la/collection',
+            data: {
+                uid: wx.getStorageSync('user').openid
+            },
+            method: 'GET',
+            success: function (res) {
+                console.log(res.data)
+                let postlist = res.data
+                if (postlist.length != 0) {
+                    for (let i = 0; i < postlist.length; i++) {
+                        if (postlist[i]['imgs']) {
+                            postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+                            postlist[i]['datetime'] = util.getLocalDateTime(postlist[i]['postid'])
+                        }
+                    }
+                    that.setData({
+                        collectList: postlist
+                    })
+                }
+            }
+        })
+        wx.request({
+            url: 'https://57113555.qcloud.la/like',
+            data: {
+                uid: wx.getStorageSync('user').openid
+            },
+            method: 'GET',
+            success: function (res) {
+                console.log(res.data)
+                let postlist = res.data
+                if (postlist.length != 0) {
+                    for (let i = 0; i < postlist.length; i++) {
+                        if (postlist[i]['imgs']) {
+                            postlist[i]['imgs'] = postlist[i].imgs.split(',')[0]
+                            postlist[i]['datetime'] = util.getLocalDateTime(postlist[i]['postid'])
+                        }
+                    }
+                    that.setData({
+                        likeList: postlist
+                    })
+                }
+            }
+        })
+        this.setData({
+            userInfo: wx.getStorageSync('userInfo'),
+        })
+        wx.getSystemInfo({
+            success: function (res) {
+                that.setData({
+                    scrollHeight: res.windowHeight
+                })
+            }
         })
     },
     onTopTap: function () {
